@@ -10,4 +10,4 @@ pub fn pause_terminal() {
 }
 
 #[cfg(not(target_os = "windows"))]
-fn pause_terminal() {}
+pub fn pause_terminal() {}
