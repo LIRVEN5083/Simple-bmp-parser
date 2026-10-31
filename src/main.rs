@@ -1,8 +1,9 @@
 mod dialogMenu;
 mod commands;
+mod parse;
+mod image;
 
 use std::io::{self, Write};
-use std::fs;
 
 fn main(){
     let choose: i8 = loop{
@@ -27,11 +28,23 @@ fn main(){
 
     println!("");
 
+    let mut path: Option<String> = None;
     match choose{
         1=> {
-            dialogMenu::pick_image_file()
+            path = dialogMenu::pick_image_file()
         }
         _ => println!("Exiting..."),
+    }
+
+    if let Some(file_path) = path {
+        match parse::parse_bmp_file(file_path) {
+            Ok(bmp) => {
+                println!("Width: {}px", bmp.width);
+                println!("Height: {}px", bmp.height);
+                println!("Binary size in bytes: {}", bmp.data.len());
+            }
+            Err(e) => println!("ERROR: {}", e),
+        }
     }
 
     commands::pause_terminal();
