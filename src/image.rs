@@ -29,7 +29,7 @@ impl BmpImage {
         let bpp = u16::from_le_bytes([self.data[28], self.data[29]]) as usize / 8;
 
         if bpp != 3 {
-            println!("Поддерживается только 24-битный BMP!");
+            println!("Supported only 24bit mode");
             return;
         }
 

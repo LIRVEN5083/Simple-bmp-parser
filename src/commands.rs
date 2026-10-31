@@ -2,7 +2,7 @@ use std::io::{self, Write};
 
 #[cfg(target_os = "windows")]
 pub fn pause_terminal() {
-    println!("\nДля выхода из программы нажмите Enter...");
+    println!("\nPress Enter to continue");
     io::stdout().flush().unwrap();
 
     let mut discard = String::new();
