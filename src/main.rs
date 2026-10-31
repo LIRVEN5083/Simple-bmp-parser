@@ -42,6 +42,8 @@ fn main(){
                 println!("Width: {}px", bmp.width);
                 println!("Height: {}px", bmp.height);
                 println!("Binary size in bytes: {}", bmp.data.len());
+                println!("Drawing in terminal: \n");
+                bmp.draw_in_terminal();
             }
             Err(e) => println!("ERROR: {}", e),
         }
